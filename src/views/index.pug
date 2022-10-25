@@ -1,0 +1,42 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='./css/style.css')
+  title egyPredict
+.container
+  .header
+    h2.hero Al Ahly vs Zamalek
+  .content
+    .info
+      span Egyptian Super Cup &nbsp;
+      span  Fri, Oct 28, 7:00 PM
+    .vs
+      .team1
+        img(src='./assets/ahly.png' alt='AL Ahly logo')
+        p Al Ahly
+      .middle
+        span vs
+        span Final
+      .team2
+        img(src='./assets/zamalek.png' alt='Zamalek logo')
+        p Zamalek
+  .predction
+    form.form(method='POST' action='/predict')
+      .predictionValues
+        .ahly
+          input#alAhlyPrediction(type='number' name='alAhlyPrediction' min='0' max='20' value='0')
+        .zamalek
+          input#zamalekPrediction(type='number' name='zamalekPrediction' min='0' max='20' value='0')
+      .userData
+        .name
+          label(for='name')  Name: 
+          input#name(type='text' name='name')
+        .mobileNumber
+          label(for='mobileNumber')  Phone Number: 
+          input#mobileNumber(type='text' name='mobileNumber')
+      button(type='submit')
+        | submit
+script(src='https://cdn.jsdelivr.net/npm/sweetalert2@11.6.2/dist/sweetalert2.all.min.js')
+script(src='https://cdn.jsdelivr.net/npm/axios@1.1.3/dist/axios.min.js')
+script(src='./scripts/main.js')

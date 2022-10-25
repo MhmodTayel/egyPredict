@@ -1,0 +1,45 @@
+version: "2.4"
+
+services:
+  client:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: "always"
+    depends_on:
+      mongodb-primary:
+        condition: service_healthy
+    networks:
+      - app-network
+    environment:
+      DB_URI: "mongodb://root:Iji2MXkowDA8njdCI@mongodb-primary:27017/predictions?replicaSet=rs0&authSource=admin"
+    ports:
+      - "3000:3000"
+
+  mongodb-primary:
+    image: bitnami/mongodb:5.0
+    environment:
+      - MONGODB_ROOT_PASSWORD=Iji2MXkowDA8njdCI
+      - MONGODB_ROOT_USER=root
+      - MONGODB_PORT_NUMBER=27017
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-primary
+      - MONGODB_REPLICA_SET_KEY=replicasetkey0
+      - MONGODB_REPLICA_SET_NAME=rs0
+    healthcheck:
+      test: [ 'CMD', 'mongo', '--eval', "db.adminCommand('ping')" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 60s
+    networks:
+      - app-network
+    volumes:
+      - mongodb-primary-data:/bitnami
+
+volumes:
+  mongodb-primary-data:
+
+
+networks:
+  app-network:
