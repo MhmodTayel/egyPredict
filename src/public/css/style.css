@@ -143,3 +143,73 @@ form {
 button:hover {
   transform: translateY(-2px);
 }
+
+
+
+@media (min-width: 400px) {
+  .container {
+    min-width: 380px;
+  }
+  
+  .container .header {  
+    font-size: 16px;
+  }
+  
+  .container .content {
+    font-size: 14px;
+  }
+  
+  .container .content .info {
+    padding: 30px;
+   padding-bottom: 40px;
+  }
+  
+  .vs {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom:15px;
+  }
+  
+  .vs > * {
+    width: 33%;
+  }
+  
+  .vs img {
+    width: 48px;
+  }
+  
+  .vs .middle {
+    align-self: flex-end;
+    position: relative;
+      font-size: 16px;
+      color: #70757a;
+      text-transform: lowercase;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .predction {
+    border: 3px solid #F8F9FA;
+    border-top: none;
+  }
+  
+  .predction .predictionValues {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .predction .predictionValues input {
+    border: 1px solid #d9d9d9;
+    padding: 8px 15px;
+    width: 100px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .userData {
+    padding-top: 40px;
+    text-align: left;
+    width:95%;
+  }
+  
+}
